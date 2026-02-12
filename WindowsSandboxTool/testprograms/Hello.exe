@@ -1,0 +1,59 @@
+
+using System.IO;
+
+namespace TrustworthySandbox
+{
+    class HelloWorld
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("========================================");
+            Console.WriteLine("  Trustworthy Computing Test Program");
+            Console.WriteLine("========================================");
+            Console.WriteLine();
+            
+            // Display command line arguments
+            if (args.Length > 0)
+            {
+                Console.WriteLine("Command Line Arguments:");
+                for (int i = 0; i < args.Length; i++)
+                {
+                    Console.WriteLine($"  [{i}]: {args[i]}");
+                }
+                Console.WriteLine();
+            }
+            
+            // Interactive mode
+            Console.Write("Enter your name: ");
+            string name = Console.ReadLine();
+            
+            if (string.IsNullOrEmpty(name))
+            {
+                name = "World";
+            }
+            
+            Console.WriteLine();
+            Console.WriteLine($"Hello, {name}!");
+            Console.WriteLine();
+            
+            // System information (to demonstrate sandbox restrictions)
+            try
+            {
+                Console.WriteLine("System Information:");
+                Console.WriteLine($"  Machine Name: {Environment.MachineName}");
+                Console.WriteLine($"  User Name: {Environment.UserName}");
+                Console.WriteLine($"  OS Version: {Environment.OSVersion}");
+                Console.WriteLine($"  Current Directory: {Environment.CurrentDirectory}");
+                Console.WriteLine($"  .NET Version: {Environment.Version}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"  [Restricted] {ex.Message}");
+            }
+            
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
